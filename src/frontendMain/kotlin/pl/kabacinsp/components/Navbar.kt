@@ -25,7 +25,6 @@ fun Container.navbar(primary: Boolean = true) {
             }
             div(className = "navbar-nav my-2 my-lg-0") {
                 link("Login", "#", className = "nav-link")
-                link("Sign in", "#", className = "nav-link")
                 link("", className = "nav-link") {
                     div(className = "custom-control custom-switch") {
                         checkBoxInput(value = true) {

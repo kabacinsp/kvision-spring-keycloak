@@ -29,6 +29,7 @@ repositories {
 val kotlinVersion: String by System.getProperties()
 val kvisionVersion: String by System.getProperties()
 val coroutinesVersion: String by project
+val keycloakVersion = "6.0.1"
 
 val webDir = file("src/frontendMain/web")
 val mainClassName = "com.example.MainKt"
@@ -70,6 +71,7 @@ kotlin {
         binaries.executable()
     }
     sourceSets {
+
         val commonMain by getting {
             dependencies {
                 api("io.kvision:kvision-server-spring-boot:$kvisionVersion")
@@ -91,6 +93,13 @@ kotlin {
                 implementation("org.springframework.boot:spring-boot-devtools")
                 implementation("org.springframework.boot:spring-boot-starter-webflux")
                 implementation("org.springframework.boot:spring-boot-starter-security")
+                implementation("org.keycloak:keycloak-spring-boot-starter:$keycloakVersion")
+            }
+
+            dependencyManagement {
+                imports {
+                    mavenBom("org.keycloak.bom:keycloak-adapter-bom:$keycloakVersion")
+                }
             }
         }
         val backendTest by getting {
