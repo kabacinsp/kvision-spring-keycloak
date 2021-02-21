@@ -1,0 +1,32 @@
+@import 'global/variables.scss';
+
+body {
+  --text-color: #{$color-header-2};
+  --bkg-color: #{$color-main-3};
+}
+
+body.dark-theme {
+  --text-color: #{$color-text-dark};
+  --bkg-color: #{$color-main-2};
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --text-color: #{$color-text-dark};
+    --bkg-color: #{$color-main-2};
+  }
+  body.light-theme {
+    --text-color: #{$color-header-2};
+    --bkg-color: #{$color-main-3};
+  }
+}
+
+* {
+  font-family: $font-global;
+  font-size: large;
+}
+
+body {
+  background: var(--bkg-color);
+  color: var(--text-color);
+}
